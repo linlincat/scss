@@ -1,0 +1,46 @@
+sass中使用@mixin声明混合，可以传递参数，参数名以$符号开始，多个参数以
+逗号分开，也可以给参数设置默认值。声明的@mixin通过@include来调用。
+
+
+
+//无参数的 mixin
+@mixin center-block {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.demo {
+    @include center-block;
+}
+
+//output
+.demo {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+//有参数的 mixin 
+@mixin opacity($opacity: 50) {
+    opacity: $opacity / 100;
+    filter: alpha(opacity=$opacity);
+}
+
+
+.opacity {
+    @include opacity;
+}
+
+.opacity-80 {
+    @include opacity(80);
+}
+
+//output
+.opacity {
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+}
+
+.opacity-80 {
+  opacity: 0.8;
+  filter: alpha(opacity=80);
+}
