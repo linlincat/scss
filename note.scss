@@ -1,0 +1,39 @@
+sass有两种注释方式，一种是标准的css注释方式/* */，
+另一种则是//双斜杆形式的单行注释，不过这种单行注释不会被转译出来。
+#在有注释的时候是需要添加@charset的,不然编译的考拉编译的时候报错
+/* */编译的时候会保留@charset
+//编译的时候联通注释 都会被取消
+
+//a.scss
+@charset "utf-8";
+
+/*
+*我是css的标准注释
+*设置body内距
+*/
+body{
+  padding:5px;
+} 
+//output
+@charset "UTF-8";
+/*
+*我是css的标准注释
+*设置body内距
+*/
+body {
+  padding: 5px;
+}
+
+
+
+//b.scss
+@charset "utf-8";
+
+//我是双斜杠表示的单行注释
+//设置body内距
+body{
+  padding:5px; //5px
+} 
+//output
+body {
+  padding: 5px; }
