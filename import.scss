@@ -1,3 +1,21 @@
+//a.scss
+body {
+    background: #eee;
+    font-size: 14px;
+    color: white;
+}
+
+//b.scss
+@import "reset.css";
+@import "a";
+p {
+    background-color: red;
+    font-size: 12px;
+    color: yellow;
+}
+
+
+//output
 @import url(reset.css);
 body {
   background: #eee;
