@@ -1,0 +1,33 @@
+函数
+# sass定义了很多函数可供使用，当然你也可以自己定义函数，以@fuction开始。
+
+
+
+//a.scss
+$baseFontSize:   10px !default;
+$gray:           #ccc !default;
+
+@function pxToRem($px) {
+    @return $px / $baseFontSize * 1rem;
+}
+
+body {
+    font-size: $baseFontSize;
+    color: lighten($gray, 10%);
+}
+
+.test {
+    font-size: pxToRem(12px);
+    color: lighten($gray, 10%);
+}
+
+//output
+body {
+  font-size: 10px;
+  color: #e6e6e6;
+}
+
+.test {
+  font-size: 1.2rem;
+  color: #e6e6e6;
+}
