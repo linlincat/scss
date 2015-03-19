@@ -1,0 +1,54 @@
+@each循环
+语法为：@each $var in <list or map>。其中$var表示变量，而list和map表示list类型数据和map类型数据。sass 3.3.0新加入了多字段循环和map数据循环。
+
+单个字段list数据循环
+
+//a.scss
+$animal-list: puma, sea-slug, egret, salamander;
+@each $animal in $animal-list {
+    .#{$animal}-icon {
+        background-image: url('images/#{$animal}.png');
+    }
+}
+
+//output
+.puma-icon {
+  background-image: url("images/puma.png");
+}
+
+.sea-slug-icon {
+  background-image: url("images/sea-slug.png");
+}
+
+.egret-icon {
+  background-image: url("images/egret.png");
+}
+
+.salamander-icon {
+  background-image: url("images/salamander.png");
+}
+
+
+//多个字段list数据循环
+//a.scss
+$animal-data: (puma, black, default), (sea-slug, blue, pointer);
+@each $animal, $color, $cursor in $animal-data {
+    .#{$animal}-icon {
+        background-image: url('/images/#{$animal}.png');
+        border: 2px solid $color;
+        cursor: $cursor;
+    }
+}
+
+//output
+.puma-icon {
+  background-image: url("/images/puma.png");
+  border: 2px solid black;
+  cursor: default;
+}
+
+.sea-slug-icon {
+  background-image: url("/images/sea-slug.png");
+  border: 2px solid blue;
+  cursor: pointer;
+}
