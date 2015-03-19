@@ -1,0 +1,103 @@
+条件判断及循环
+@if判断
+
+@if可一个条件单独使用，也可以和@else结合多条件使用
+
+//@if
+$lte7: true;
+$type: monster;
+
+.ib {
+    display: inline-block;
+    @if $lte7 {
+        *display: inline;
+        *zoom: 1;
+    }
+}
+
+p {
+    @if $type == ocean {
+        color: blue;
+    } @else if $type == matador {
+        color: red;
+    } @else if $type == monster {
+        color: green;
+    } @else {
+        color: black;
+    }
+
+}
+//output
+.ib {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+
+p {
+  color: green;
+}
+
+
+三目判断
+
+语法为：if($condition, $if_true, $if_false) 。三个参数分别表示：条件，条件为真的值，条件为假的值。
+//a.scss
+$change: true;
+p {
+    border:if($change, 2px, 1px) solid red;
+}
+h1 {
+    border:if($change, 1px, 2px) solid red;
+}
+
+//output
+p {
+  border: 2px solid red;
+}
+
+h1 {
+  border: 1px solid red;
+}
+
+
+for循环
+
+for循环有两种形式，分别为：@for $var from <start> through <end>
+和@for $var from <start> to <end>。$i表示变量，start表示起始值，end表示结束值，这两个的区别是关键字through表示包括end这个数，而to则不包括end这个数。
+
+//a.scss
+@for $i from 1 through 3 {
+    .item-#{$i} {
+        width: 2em * $i;
+    }
+}
+//output
+.item-1 {
+  width: 2em;
+}
+
+.item-2 {
+  width: 4em;
+}
+
+.item-3 {
+  width: 6em;
+}
+
+
+//a.scss
+@for $i from 1 to 3 {
+    .item-#{$i} {
+        width: 2em * $i;
+    }
+}
+
+//output
+.item-1 {
+  width: 2em;
+}
+
+.item-2 {
+  width: 4em;
+}
