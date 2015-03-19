@@ -1,0 +1,26 @@
+#特殊变量
+
+#一般我们定义的变量都为属性值，可直接使用，但是如果变量作为属性或在
+#某些特殊情况下等则必须要以#{$variables}形式使用。
+
+//a.scss
+$borderDirection:    top !default;
+$baseFontSize:       12px !default;
+$baseLineHeight:     1.5 !default;
+
+.border-#{$borderDirection} {
+    border-#{$borderDirection}:1px solid #ccc;
+}
+
+body {
+    font:#{$baseFontSize}/#{$baseLineHeight};
+}
+
+//output
+.border-top {
+  border-top: 1px solid #ccc;
+}
+
+body {
+  font: 12px/1.5;
+}
