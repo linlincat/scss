@@ -1,0 +1,73 @@
+sass的嵌套包括两种：一种是选择器的嵌套；另一种是属性的嵌套。我们一般说起或用到的都是选择器的嵌套。
+
+选择器嵌套
+
+所谓选择器嵌套指的是在一个选择器中嵌套另一个选择器来实现继承，从而增强了sass文件的结构性和可读性。
+
+在选择器嵌套中，可以使用&表示父元素选择器
+
+//a.scss
+#top_nav {
+    line-height: 40px;
+    text-transform: capitalize;
+    background-color: #ccc;
+
+    li {
+        float: left;
+    }
+
+    a {
+        display: block;
+
+        &:hover {
+            color: red;
+        }
+    }
+}
+
+//output
+
+#top_nav {
+  line-height: 40px;
+  text-transform: capitalize;
+  background-color: #ccc;
+}
+#top_nav li {
+  float: left;
+}
+#top_nav a {
+  display: block;
+}
+#top_nav a:hover {
+  color: red;
+}
+
+
+属性嵌套
+
+所谓属性嵌套指的是有些属性拥有同一个开始单词，如border-width，border-color都是以border开头。
+
+//a.scss
+.fakeshadow {
+    border: {
+        style: solid;
+        left: {
+            width: 4px;
+            color: #888;
+        }
+
+        right: {
+            width: 2px;
+            color: #ccc
+        }
+    }
+}
+
+//output
+.fakeshadow {
+  border-style: solid;
+  border-left-width: 4px;
+  border-left-color: #888;
+  border-right-width: 2px;
+  border-right-color: #ccc;
+}
