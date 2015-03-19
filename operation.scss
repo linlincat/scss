@@ -1,0 +1,17 @@
+运算
+sass具有运算的特性，可以对数值型的Value(如：数字、颜色、变量等)进行加减乘除四则运算。请注意运算符前后请留一个空格，不然会出错。
+
+
+//a.scss
+$baseFontSize:          14px !default;
+$baseLineHeight:        1.5 !default;
+$baseGap:               $baseFontSize * $baseLineHeight !default;
+$halfBaseGap:           $baseGap / 2  !default;
+$samllFontSize:         $baseFontSize - 2px  !default;
+
+//网格 grid
+$_columns:                     12 !default;
+
+
+
+
