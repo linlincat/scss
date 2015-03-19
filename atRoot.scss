@@ -1,0 +1,64 @@
+@at-root
+
+sass3.3.0中新增的功能，用来跳出选择器嵌套的。默认所有的嵌套，继承所有上级选择器，但有了这个就可以跳出所有上级选择器。
+
+普通跳出嵌套
+
+//a.scss
+.parent-1 {
+    color: #fff;
+    .child {
+        width: 10px;
+    }
+}
+
+.parent-2 {
+    color: #fff;
+    @at-root .child {
+        width: 200px;
+    }
+}
+
+.parent-3 {
+    background-color: red;
+    @at-root {
+        .child1 {
+            width: 300px;
+            .nth_child {
+                height: 20px;
+            }
+        }
+        .child2 {
+            width: 400px;
+        }
+    }
+}
+
+//output
+.parent-1 {
+  color: #fff;
+}
+.parent-1 .child {
+  width: 10px;
+}
+
+.parent-2 {
+  color: #fff;
+}
+.child {
+  width: 200px;
+}
+
+.parent-3 {
+  background-color: red;
+}
+.child1 {
+  width: 300px;
+}
+.child1 .nth_child {
+  height: 20px;
+}
+
+.child2 {
+  width: 400px;
+}
