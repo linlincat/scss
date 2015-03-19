@@ -1,0 +1,53 @@
+/* 多值变量分为list类型和map类型，简单来说list类型有点像js中的数组，而map类型有点像js中的对象。
+list
+
+list数据可通过空格，逗号或小括号分隔多个值，可用nth($var,$index)取值。关于list数据操作还有很多其他
+函数如length($list)，join($list1,$list2,[$separator])，append($list,$value,[$separator])等 */
+
+//一维数据
+$px: 5px 10px 20px 30px;
+
+//二维数据，相当于js中的二维数组
+$px: (5px 10px) (20px 30px);
+
+
+
+//list
+$linkColor:    #ccc #ddd !default;
+a {
+    color:nth($linkColor, 1);
+
+    &:hover {
+        color:nth($linkColor, 2);
+    }
+}
+//list output
+a {
+  color: #cccccc;
+}
+a:hover {
+  color: #dddddd;
+}
+
+//map 下面的这个暂时没有编译出来，日后会对其进行更新【暂借网上资源】
+
+/* map数据以key和value成对出现，其中value又可以是list。格式为：$map: (key1: value1, key2: value2, key3: value3);。
+可通过map-get($map,$key)取值。关于map数据还有很多其他函数如map-merge($map1,$map2)，map-keys($map)，map-values($map)等 */
+//map
+$headings: (h1: 2em, h2: 1.5em, h3: 1.2em);
+@each $header, $size in $headings {
+  #{$header} {
+    font-size: $size;
+  }
+}
+//map output
+
+h1 {
+  font-size: 2em; 
+}
+h2 {
+  font-size: 1.5em; 
+}
+h3 {
+  font-size: 1.2em; 
+}
