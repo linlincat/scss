@@ -31,7 +31,9 @@ a:hover {
 
 //map 下面的这个暂时没有编译出来，日后会对其进行更新【暂借网上资源】
 * 原因考拉的版本有点低，但不理解为何我的gulp.ruby.sass也无法编译。
-暂时用卡拉先测试吧
+
+*【实在不想说这个原因 gulp.ruby.sass 无法编译的原因是，我生成.css的scss配置是，放了没有的路径，当时没有看报错信息
+导致误解它无法编译。】
 
 /* map数据以key和value成对出现，其中value又可以是list。格式为：$map: (key1: value1, key2: value2, key3: value3);。
 可通过map-get($map,$key)取值。关于map数据还有很多其他函数如map-merge($map1,$map2)，map-keys($map)，map-values($map)等 */
