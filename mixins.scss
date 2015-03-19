@@ -1,0 +1,50 @@
+多个参数mixin
+
+调用时可直接传入值，如@include传入参数的个数小于@mixin定义参数的个数，则按照顺序表示，
+后面不足的使用默认值，如不足的没有默认值则报错。除此之外还可以选择性的传入参数，使用参数名与值同时传入。
+
+//多个参数mixin
+@mixin horizontal-line($border:1px dashed #ccc, $padding:10px) {
+    border-bottom:$border;
+    padding-top:$padding;
+}
+
+.imgtext-h li {
+    @include horizontal-line(1px solid #ccc);
+}
+
+.imgtext-h--product li {
+    @include horizontal-line($padding:15px);
+}
+
+//output
+.imgtext-h li {
+  border-bottom: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+.imgtext-h--product li {
+  border-bottom: 1px dashed #ccc;
+  padding-top: 15px;
+}
+
+//多组值参数mixin
+如果一个参数可以有多组值，如box-shadow、transition等，那么参数则需要在变量后加三个点表示，如$variables
+//box-shadow可以有多组值，所以在变量参数后面添加...
+
+@mixin box-shadow($shadow...) {
+    -webkit-box-shadow: $shadow;
+    box-shadow: $shadow;
+}
+
+.box {
+    border: 1px solid red;
+    @include box-shadow(0 2px 2px rgba(0,0,0,0));
+}
+
+//output
+.box {
+  border: 1px solid red;
+  -webkit-box-shadow: 0 2px 2px transparent;
+  box-shadow: 0 2px 2px transparent;
+}
